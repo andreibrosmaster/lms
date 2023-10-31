@@ -2,12 +2,15 @@
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     if (isset($_POST['edit'])) {
         // Registration code
-        $textarea = $_POST['textarea'];
+        $school_name = $_POST['school_name'];
         $id = 1;
        
-        $video = $_FILES['video']['name']; // Get the filename of the uploaded video
-        $video_tmp = $_FILES['video']['tmp_name']; // Get the temporary location of the uploaded video
-        $video_path = 'assets/images/' . $video; // Set the desired path to store the uploaded video
+       
+        $logo = $_FILES['logo']['name']; // Get the filename of the uploaded video
+        $logo_tmp = $_FILES['logo']['tmp_name']; // Get the temporary location of the uploaded video
+
+
+        $logo_path = 'logo/' . $logo; // Set the desired path to store the uploaded video
 
         // Establish Connection
         require_once('connection.php');
@@ -18,13 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             exit();
         } else {
             // Insert user data into the database
-            $sql = "UPDATE homepage SET textarea = '$textarea', video = '$video_path' WHERE id = $id";
+            $sql = "UPDATE header SET school_name = '$school_name', logo = '$logo_path' WHERE id = $id";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 // Move the uploaded video to the desired location
-                move_uploaded_file($video_tmp, $video_path);
+                move_uploaded_file($logo_tmp, $logo_path);
 
-                echo '<script>window.location = "homepage-db.php";</script>';
+                echo '<script>window.location = "header.php";</script>';
                 exit();
             } else {
                 die(mysqli_error($conn));

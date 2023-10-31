@@ -3,6 +3,17 @@ require_once('connection.php');
 $sql = "SELECT * FROM courses";
 $result = mysqli_query($conn, $sql);
 
+$squery = "SELECT * FROM header WHERE id = 1;";
+$resulta = mysqli_query($conn, $squery);
+
+if (mysqli_num_rows($resulta) > 0) {
+    while ($header_row = mysqli_fetch_assoc($resulta)) {
+        // Display the 'textarea' and 'video' columns
+        $school_name = $header_row['school_name'];
+        $logo = $header_row['logo'];
+
+    }}
+
 function getRandomColor() {
   $letters = '0123456789ABCDEF';
   $color = '#';
@@ -33,9 +44,10 @@ function getRandomColor() {
 <div class="header" id="header">
     <div class="logo">
       <!-- Place your logo here -->
-      <img src="logo-ncu.png" alt="" class="logo-ncu">    
-      <span class="company-name">NICENE UNIVERSITY</span>
+      <img src="<?php echo "$logo"?>" alt="" class="logo-ncu">    
+      <span class="company-name"><?php echo "$school_name"?></span>
     </div>
+
 
 
    <!--USERNAME SHOW---->
@@ -46,8 +58,8 @@ function getRandomColor() {
   </div>
   <div class="sidebar">
     <ul class="menu">
-      <li><a href="#"><ion-icon name="home-outline"></ion-icon></a></li>
-      <li><a href="calendar.php"><ion-icon name="calendar-outline"></ion-icon></a></li>
+      <li><a href="lms.php"><ion-icon name="home-outline"></ion-icon></a></li>
+      <li><a href="calendar-user.php"><ion-icon name="calendar-outline"></ion-icon></a></li>
       <li>
         <form action="logout.php" method="post" name="logout">
           <button type="submit" name="logoutBtn"><ion-icon name="log-out-outline"></ion-icon></button>

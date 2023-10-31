@@ -1,3 +1,18 @@
+<?php
+require_once('connection.php');
+
+$squery = "SELECT * FROM header WHERE id = 1;";
+$resulta = mysqli_query($conn, $squery);
+
+if (mysqli_num_rows($resulta) > 0) {
+    while ($header_row = mysqli_fetch_assoc($resulta)) {
+        // Display the 'textarea' and 'video' columns
+        $school_name = $header_row['school_name'];
+        $logo = $header_row['logo'];
+
+    }}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,12 +29,14 @@
 <body>
 
 
+
 <div class="header" id="header">
     <div class="logo">
       <!-- Place your logo here -->
-      <img src="logo-ncu.png" alt="" class="logo-ncu">    
-      <span class="company-name">NICENE UNIVERSITY</span>
+      <img src="<?php echo "$logo"?>" alt="" class="logo-ncu">    
+      <span class="company-name"><?php echo "$school_name"?></span>
     </div>
+
 
 
    <!--USERNAME SHOW---->
@@ -30,7 +47,11 @@
   </div>
   <div class="sidebar">
     <ul class="menu">
-      <li><a href="lms.php"><ion-icon name="home-outline"></ion-icon></a></li>
+    <li><a href="header.php"><ion-icon name="laptop-outline"></ion-icon></a></li>
+    <li><a href="homepage-db.php"><ion-icon name="easel-outline"></ion-icon></a></li> 
+    <li><a href="teacher.php"><ion-icon name="accessibility-outline"></ion-icon></a></li>
+      <li><a href="dashboard.php"><ion-icon name="people-outline"></ion-icon></a></li>
+      <li><a href="courses.php"><ion-icon name="book-outline"></ion-icon></a></li>
       <li><a href="calendar.php"><ion-icon name="calendar-outline"></ion-icon></a></li>
       <li>
         <form action="logout.php" method="post" name="logout">

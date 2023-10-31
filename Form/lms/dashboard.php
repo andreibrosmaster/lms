@@ -8,6 +8,16 @@ $result = mysqli_query($conn, $query);
 $sql = "SELECT * FROM teachers";
 $result_teach = mysqli_query($conn, $sql);
 
+$squery = "SELECT * FROM header WHERE id = 1;";
+$resulta = mysqli_query($conn, $squery);
+
+if (mysqli_num_rows($resulta) > 0) {
+    while ($header_row = mysqli_fetch_assoc($resulta)) {
+        // Display the 'textarea' and 'video' columns
+        $school_name = $header_row['school_name'];
+        $logo = $header_row['logo'];
+
+    }}
 
 ?>
 <!DOCTYPE html>
@@ -28,8 +38,8 @@ $result_teach = mysqli_query($conn, $sql);
 <div class="header" id="header">
     <div class="logo">
       <!-- Place your logo here -->
-      <img src="logo-ncu.png" alt="" class="logo-ncu">    
-      <span class="company-name">NICENE UNIVERSITY</span>
+      <img src="<?php echo "$logo"?>" alt="" class="logo-ncu">    
+      <span class="company-name"><?php echo "$school_name"?></span>
     </div>
 
 
@@ -40,6 +50,7 @@ $result_teach = mysqli_query($conn, $sql);
   </div>
   <div class="sidebar">
     <ul class="menu">
+    <li><a href="header.php"><ion-icon name="laptop-outline"></ion-icon></a></li>
     <li><a href="homepage-db.php"><ion-icon name="easel-outline"></ion-icon></a></li> 
     <li><a href="teacher.php"><ion-icon name="accessibility-outline"></ion-icon></a></li>
       <li><a href="dashboard.php"><ion-icon name="people-outline"></ion-icon></a></li>
@@ -142,7 +153,7 @@ $result_teach = mysqli_query($conn, $sql);
         <div class="status-box" id="update">
       <h2>Status</h2>
       <form id="status-update" name="status-form" action="update.php" method="POST">
-      <label for="status-id">Student ID:</label>
+      <label for="status-id">ID Number:</label>
       <input type="number" id="status-id" name="id" required>
 
       <input type="radio" name="status" value="1"> Active

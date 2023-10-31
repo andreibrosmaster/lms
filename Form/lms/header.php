@@ -1,7 +1,7 @@
 <?php
 
 require_once('connection.php');
-$query = "SELECT * FROM homepage";
+$query = "SELECT * FROM header";
 $result = mysqli_query($conn, $query);
 
 $squery = "SELECT * FROM header WHERE id = 1;";
@@ -14,6 +14,7 @@ if (mysqli_num_rows($resulta) > 0) {
         $logo = $header_row['logo'];
 
     }}
+
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +31,6 @@ if (mysqli_num_rows($resulta) > 0) {
 </head>
 <body>
    
-
 <div class="header" id="header">
     <div class="logo">
       <!-- Place your logo here -->
@@ -69,12 +69,12 @@ if (mysqli_num_rows($resulta) > 0) {
 <!-- Create Function -->
 <div class="create">
             <h2>Add Record</h2>
-            <form id="createForm" name="create" action="homepage-create.php" method="POST" enctype="multipart/form-data">
-    <label for="textarea">TextArea</label>
-    <textarea id="textarea" name="textarea" required></textarea>
+            <form id="createForm" name="create" action="header-create.php" method="POST" enctype="multipart/form-data">
+    <label for="school_name">School Name</label>
+    <textarea id="school_name" name="school_name" required></textarea>
 
-    <label for="video">Video Background</label>
-    <input type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*" required>
+    <label for="logo">Header Logo</label>
+    <input type="file" id="logo" name="logo" accept="image/png" required>
 
     <button type="submit" name="create">Add Data</button>
 </form>
@@ -85,15 +85,15 @@ if (mysqli_num_rows($resulta) > 0) {
         <!-- Edit Function -->
        <div class="edit">
     <h2>Edit Record</h2>
-    <form id="editForm" name="edit" action="homepage-edit.php" method="POST" enctype="multipart/form-data">
+    <form id="editForm" name="edit" action="header-edit.php" method="POST" enctype="multipart/form-data">
 
-      
+        
 
-        <label for="textarea">TextArea</label>
-    <textarea id="textarea" name="textarea" required></textarea>
+        <label for="school_name">School Name</label>
+    <textarea id="school_name" name="school_name" required></textarea>
 
-    <label for="video">Video Background</label>
-    <input type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*" required>
+    <label for="logo">Header Logo</label>
+    <input type="file" id="logo" name="logo" accept="image/png" required>
 
         <button type="submit" name="edit">Edit Data</button>
     </form>
@@ -122,8 +122,8 @@ if (mysqli_num_rows($resulta) > 0) {
               <tbody>
                 <tr class="bg-dark text-white">
                   <td> ID </td>
-                  <td> Text</td>
-                  <td> Video</td>
+                  <td> School Name</td>
+                  <td> Logo</td>
                 </tr>
                 <tr>
                 <?php
@@ -131,8 +131,8 @@ if (mysqli_num_rows($resulta) > 0) {
                 {
                   ?>
               <td><?php echo $row['id'];  ?> </td>
-              <td><?php echo $row['textarea'];  ?> </td>
-              <td><?php echo $row['video'];  ?> </td>
+              <td><?php echo $row['school_name'];  ?> </td>
+              <td><?php echo $row['logo'];  ?> </td>
 
                 </tr>
               <?php

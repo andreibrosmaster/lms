@@ -6,19 +6,6 @@ $result = mysqli_query($conn, $query);
 
 $sql = "SELECT * FROM courses";
 $res = mysqli_query($conn, $sql);
-
-$squery = "SELECT * FROM header WHERE id = 1;";
-$resulta = mysqli_query($conn, $squery);
-
-if (mysqli_num_rows($resulta) > 0) {
-    while ($header_row = mysqli_fetch_assoc($resulta)) {
-        // Display the 'textarea' and 'video' columns
-        $school_name = $header_row['school_name'];
-        $logo = $header_row['logo'];
-
-    }}
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,23 +25,19 @@ if (mysqli_num_rows($resulta) > 0) {
 <div class="header" id="header">
     <div class="logo">
       <!-- Place your logo here -->
-      <img src="<?php echo "$logo"?>" alt="" class="logo-ncu">    
-      <span class="company-name"><?php echo "$school_name"?></span>
+      <img src="logo-ncu.png" alt="" class="logo-ncu">    
+      <span class="company-name">NICENE UNIVERSITY</span>
     </div>
 
 
 
     <div class="user-greeting">
-    <p>Hello, <span id="username">Superadmin</span></p>
+    <p>Hello, <span id="username">Teacher</span></p>
     </div>
   </div>
   <div class="sidebar">
     <ul class="menu">
-    <li><a href="header.php"><ion-icon name="laptop-outline"></ion-icon></a></li>
-    <li><a href="homepage-db.php"><ion-icon name="easel-outline"></ion-icon></a></li> 
     <li><a href="teacher.php"><ion-icon name="accessibility-outline"></ion-icon></a></li>
-      <li><a href="dashboard.php"><ion-icon name="people-outline"></ion-icon></a></li>
-      <li><a href="courses.php"><ion-icon name="book-outline"></ion-icon></a></li>
       <li><a href="calendar.php"><ion-icon name="calendar-outline"></ion-icon></a></li>
       <li>
         <form action="logout.php" method="post">
@@ -70,7 +53,7 @@ if (mysqli_num_rows($resulta) > 0) {
         <!-- Create Function -->
         <div class="create">
             <h2>Create Course</h2>
-            <form id="createForm" name="createForm" action="teacher-create.php" method="POST" enctype="multipart/form-data">
+            <form id="createForm" name="createForm" action="teacher-create-admin.php" method="POST" enctype="multipart/form-data">
                 <label for="course-name">Course Name:</label>
                 <input type="text" id="course-name" name="course_name" required>
 
@@ -86,7 +69,7 @@ if (mysqli_num_rows($resulta) > 0) {
         <!-- Edit Function -->
         <div class="edit">
     <h2>Edit Course Content</h2>
-    <form id="editForm" name="editForm" action="teacher-edit.php" method="POST" enctype="multipart/form-data">
+    <form id="editForm" name="editForm" action="teacher-edit-admin.php" method="POST" enctype="multipart/form-data">
 
         <label for="course-id">Course ID</label>
         <input type="number" id="course-id" name="id" required>
