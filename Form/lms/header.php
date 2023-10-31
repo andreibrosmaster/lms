@@ -4,6 +4,8 @@ require_once('connection.php');
 $query = "SELECT * FROM header";
 $result = mysqli_query($conn, $query);
 
+
+
 $squery = "SELECT * FROM header WHERE id = 1;";
 $resulta = mysqli_query($conn, $squery);
 
@@ -34,8 +36,26 @@ if (mysqli_num_rows($resulta) > 0) {
 <div class="header" id="header">
     <div class="logo">
       <!-- Place your logo here -->
-      <img src="<?php echo "$logo"?>" alt="" class="logo-ncu">    
-      <span class="company-name"><?php echo "$school_name"?></span>
+      <img src="<?php echo "$logo"?>" alt="School Logo" class="logo-ncu">    
+      <span class="company-name"><?php if ($result) {
+    // Check if data was found
+    if (mysqli_num_rows($result) > 0) {
+        // Fetch the school name
+        $row = mysqli_fetch_assoc($result);
+        $school_name = $row['school_name'];
+        ?>
+        <span class="company-name"><?php echo $school_name; ?></span>
+        <?php
+    } else {
+        // No data found, you can display a default name or a message
+        ?>
+        <span class="no-school-found" style="font-size: 10px;">No School Name Found</span>
+        <?php
+    }
+} else {
+    // Handle the database query error
+    echo "Error: " . mysqli_error($connection);
+}?></span>
     </div>
 
 
@@ -67,20 +87,20 @@ if (mysqli_num_rows($resulta) > 0) {
   <div class="functions">
 
 <!-- Create Function -->
+
+
 <div class="create">
-            <h2>Add Record</h2>
-            <form id="createForm" name="create" action="header-create.php" method="POST" enctype="multipart/form-data">
-    <label for="school_name">School Name</label>
-    <textarea id="school_name" name="school_name" required></textarea>
-
-    <label for="logo">Header Logo</label>
-    <input type="file" id="logo" name="logo" accept="image/png" required>
-
-    <button type="submit" name="create">Add Data</button>
-</form>
-
-
-        </div>
+    <h2>Add Record</h2>
+    <form id="createForm" name="create" action="header-create.php" method="POST" enctype="multipart/form-data">
+        <label for="school_name">School Name</label>
+        <textarea id="school_name" name="school_name" required></textarea>
+    
+        <label for="logo">Header Logo</label>
+        <input type="file" id="logo" name="logo" accept="image/png" required>
+    
+        <button type="submit" name="create">Add Data</button>
+    </form>
+    </div>'
 
         <!-- Edit Function -->
        <div class="edit">
@@ -115,7 +135,7 @@ if (mysqli_num_rows($resulta) > 0) {
       <div class="col">
         <div class="card">
           <div class="card-header">
-            <h2 class="display-6">Landing Page</h2>
+            <h2 class="display-6">Header Data</h2>
           </div>
           <div class="card-body">
             <table>
