@@ -38,7 +38,7 @@ $res = mysqli_query($conn, $sql);
   <div class="sidebar">
     <ul class="menu">
     <li><a href="teacher.php"><ion-icon name="accessibility-outline"></ion-icon></a></li>
-      <li><a href="calendar.php"><ion-icon name="calendar-outline"></ion-icon></a></li>
+      <li><a href="calendar-for-teacher.php"><ion-icon name="calendar-outline"></ion-icon></a></li>
       <li>
         <form action="logout.php" method="post">
           <button type="submit" name="logoutBtn"><ion-icon name="log-out-outline"></ion-icon></button>

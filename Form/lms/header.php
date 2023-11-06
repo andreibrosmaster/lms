@@ -129,44 +129,6 @@ if (mysqli_num_rows($resulta) > 0) {
 
 </div>
 
-<div class="container_table">
-  <div class="db-table">
-    <div class="row">
-      <div class="col">
-        <div class="card">
-          <div class="card-header">
-            <h2 class="display-6">Header Data</h2>
-          </div>
-          <div class="card-body">
-            <table>
-              <tbody>
-                <tr class="bg-dark text-white">
-                  <td> ID </td>
-                  <td> School Name</td>
-                  <td> Logo</td>
-                </tr>
-                <tr>
-                <?php
-                while($row = mysqli_fetch_assoc($result))
-                {
-                  ?>
-              <td><?php echo $row['id'];  ?> </td>
-              <td><?php echo $row['school_name'];  ?> </td>
-              <td><?php echo $row['logo'];  ?> </td>
-
-                </tr>
-              <?php
-                }
-                ?>
-               
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
   
 

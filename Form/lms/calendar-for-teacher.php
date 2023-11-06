@@ -62,8 +62,8 @@ if (mysqli_num_rows($resulta) > 0) {
   </div>
   <div class="sidebar">
     <ul class="menu">
-    <li><a href="lms.php"><ion-icon name="easel-outline"></ion-icon></a></li> 
-      <li><a href="calendar.php"><ion-icon name="calendar-outline"></ion-icon></a></li>
+    <li><a href="teacher-for-teacher.php"><ion-icon name="easel-outline"></ion-icon></a></li> 
+      <li><a href="calendar-for-teacher.php"><ion-icon name="calendar-outline"></ion-icon></a></li>
       <li>
         <form action="logout.php" method="post" name="logout">
           <button type="submit" name="logoutBtn"><ion-icon name="log-out-outline"></ion-icon></button>

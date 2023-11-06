@@ -44,8 +44,23 @@ function getRandomColor() {
 <div class="header" id="header">
     <div class="logo">
       <!-- Place your logo here -->
-      <img src="<?php echo "$logo"?>" alt="" class="logo-ncu">    
-      <span class="company-name"><?php echo "$school_name"?></span>
+      <img src="<?php echo "$logo"?>" alt="Logo" class="logo-ncu">    
+      <span class="company-name"><?php if ($resulta) {
+    // Check if data was found
+    if (mysqli_num_rows($resulta) > 0) {
+        // Fetch the school name
+        $row = mysqli_fetch_assoc($resulta);
+        $school_name = $row['school_name'];
+        ?>
+        <span class="company-name"><?php echo $school_name; ?></span>
+        <?php
+    } else {
+        // No data found, you can display a default name or a message
+        ?>
+        <span class="no-school-found" style="font-size: 10px;">No School Name Found</span>
+        <?php
+    }
+}?></span>
     </div>
 
 
