@@ -33,7 +33,7 @@ include('db_connection.php');
         </div>
         <form id="login" class="input-group" name="form-login" action="db_connection.php" method="POST">
             <input type="text" class="input-field" placeholder="Username" name="login_username" required>
-            <input type="text" class="input-field" placeholder="Password" name="login_password" required>
+            <input type="password" class="input-field" placeholder="Password" name="login_password" required>
             <input type="checkbox" class="checkbox"><span class="span-btn" name="login_remember" >Remember Password</span>
             <button type="submit" class="submit-btn" name="loginBtn">Log In</button>
     </form>
@@ -44,7 +44,7 @@ include('db_connection.php');
             <input type="text" class="input-field" placeholder="Last Name" name="register_lname" required>
 
             <input type="email" class="input-field" placeholder="Email" name="register_email" required>
-            <input type="text" class="input-field" placeholder="Password" name="register_password" required>
+            <input type="password" class="input-field" placeholder="Password" name="register_password" required>
             <input type="checkbox" class="checkbox" name="register_agree" value="1"><span class="span-btn" >I agree to terms and Conditions</span>
             <button type="submit" class="submit-btn" name="registerBtn">Register</button>
     </form>
