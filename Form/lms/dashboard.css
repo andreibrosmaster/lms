@@ -175,3 +175,60 @@ background-color: #e6e6e6;
   color: #ffffff; /* Set the text color to white */
 }
 
+/**/
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+  .functions {
+    flex-direction: column; /* Switch to single-column layout */
+  }
+
+  .create, .edit, .delete {
+    width: 100%; /* Fill the available space */
+  }
+
+  .delete {
+    display: block; /* Show delete button on smaller screens */
+  }
+
+  input[type="text"],
+  textarea, input[type="number"], input[type="email"] {
+    width: 100%; /* Make input fields full-width */
+  }
+
+  label {
+    display: inline-block; /* Adjust label layout for smaller screens */
+  }
+
+  /* Table responsiveness */
+  .db-table {
+    width: auto; /* Set table width to auto */
+  }
+
+  table {
+    display: block;
+    overflow-x: auto; /* Make table scrollable on horizontal overflow */
+  }
+
+  table tr {
+    display: flex;
+    flex-direction: column; /* Switch to stacked layout for table rows */
+  }
+
+  table td {
+    display: block;
+    width: 100%; /* Make table cells full-width */
+  }
+
+  table tr:first-child {
+    display: none; /* Hide table header on smaller screens */
+  }
+
+  table tr th {
+    display: table-header-group; /* Display table header as a group */
+  }
+
+  table tr td {
+    text-align: left; /* Align table cell content to the left */
+  }
+}

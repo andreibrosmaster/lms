@@ -48,7 +48,6 @@ if (mysqli_num_rows($resulta) > 0) {
   </div>
 
 
-
  
   <div class="container">
 

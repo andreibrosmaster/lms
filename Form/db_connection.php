@@ -142,7 +142,7 @@ if (password_verify($login_password, $stored_password)) {
         exit();
     } else {
         echo "Login Successful";
-                        header("Location: lms/teacher-for-teacher.php");
+                        header("Location: lms/teacher/teacher.php");
                         exit();
     }
 } else {

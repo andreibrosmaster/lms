@@ -4,17 +4,6 @@ require_once('connection.php');
 $query = "SELECT * FROM homepage";
 $result = mysqli_query($conn, $query);
 
-$squery = "SELECT * FROM header WHERE id = 1;";
-$resulta = mysqli_query($conn, $squery);
-
-if (mysqli_num_rows($resulta) > 0) {
-    while ($header_row = mysqli_fetch_assoc($resulta)) {
-        // Display the 'textarea' and 'video' columns
-        $school_name = $header_row['school_name'];
-        $logo = $header_row['logo'];
-
-    }}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +20,6 @@ if (mysqli_num_rows($resulta) > 0) {
 <body>
    
 
-
 <div class="header" id="header">
 <?php include_once('dynamic-header.php'); ?>
 <div class="user-greeting">
@@ -45,8 +33,6 @@ if (mysqli_num_rows($resulta) > 0) {
 
 
   </div>
-
- 
 
 
  
@@ -73,9 +59,10 @@ if (mysqli_num_rows($resulta) > 0) {
         <!-- Edit Function -->
        <div class="edit">
     <h2>Edit Record</h2>
-    <form id="editForm" name="edit" action="homepage-edit.php" method="POST" enctype="multipart/form-data">
+    <form id="editForm" name="edit" action="homepage-edit.php" method="POST">
 
-      
+        <label for="id">ID:</label>
+        <input type="number" id="id" name="id" required>
 
         <label for="textarea">TextArea</label>
     <textarea id="textarea" name="textarea" required></textarea>

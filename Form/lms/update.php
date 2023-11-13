@@ -13,15 +13,18 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         } else {
             $status = $_POST['status'];
 
-            // Corrected SQL query syntax
-            $update_query = "UPDATE `users` SET agree = '$status' WHERE id = '$id';";
-            $update_query .= "UPDATE `teachers` SET agree = '$status' WHERE id = '$id';";
+            $update_query = "UPDATE `users` SET agree = '$status' WHERE id = '$id'
+            UNION
+            UPDATE teachers` SET agree = '$status' WHERE id = '$id'
+            ";
+            $result = mysqli_query($conn, $update_query);
 
-            if (mysqli_multi_query($conn, $update_query)) {
+            if ($result) {
                 echo '<script>window.location = "dashboard.php";</script>';
             } else {
                 echo "Failed to update status: " . mysqli_error($conn);
             }
+            
         }
     }
 }

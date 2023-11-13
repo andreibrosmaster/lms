@@ -2,27 +2,7 @@
 require_once('connection.php');
 $sql = "SELECT * FROM courses";
 $result = mysqli_query($conn, $sql);
-
-$squery = "SELECT * FROM header WHERE id = 1;";
-$resulta = mysqli_query($conn, $squery);
-
-if (mysqli_num_rows($resulta) > 0) {
-    while ($header_row = mysqli_fetch_assoc($resulta)) {
-        // Display the 'textarea' and 'video' columns
-        $school_name = $header_row['school_name'];
-        $logo = $header_row['logo'];
-
-    }}
-
-function getRandomColor() {
-  $letters = '0123456789ABCDEF';
-  $color = '#';
-  for ($i = 0; $i < 6; $i++) {
-      $color .= $letters[rand(0, 15)];
-  }
-  return $color;
-}
-
+$courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -44,22 +24,21 @@ function getRandomColor() {
 <div class="header" id="header">
     <div class="logo">
       <!-- Place your logo here -->
-      <img src="<?php echo "$logo"?>" alt="Logo" class="logo-ncu">    
-      <span class="company-name"><?php echo "$school_name"?></span>
+      <img src="logo-ncu.png" alt="" class="logo-ncu">    
+      <span class="company-name">NICENE UNIVERSITY</span>
     </div>
-
 
 
    <!--USERNAME SHOW---->
     <div class="user-greeting">
-    <p>Hello, <span id="username"> Student</span></p>
+    <p>Hello, Student<span id="username"></span></p>
     </div>
 
   </div>
   <div class="sidebar">
     <ul class="menu">
-      <li><a href="lms.php"><ion-icon name="home-outline"></ion-icon></a></li>
-      <li><a href="calendar-user.php"><ion-icon name="calendar-outline"></ion-icon></a></li>
+      <li><a href="#"><ion-icon name="home-outline"></ion-icon></a></li>
+      <li><a href="calendar.php"><ion-icon name="calendar-outline"></ion-icon></a></li>
       <li>
         <form action="logout.php" method="post" name="logout">
           <button type="submit" name="logoutBtn"><ion-icon name="log-out-outline"></ion-icon></button>
@@ -75,18 +54,15 @@ function getRandomColor() {
       //PRACTICE 
   
   //
-      if(mysqli_num_rows($result) == 0){
-        
+      if(empty($courses)){
         echo '<p>No Courses Available</p>';
       } else{
-        
-        while ($course = mysqli_fetch_assoc($result)) {
-          $imagePath = 'upload-img/' . strtolower($course['course_name'] ) .'.jpg';
-          $randomColor = getRandomColor();
+        foreach ($courses as $course) {
+          $imagePath = 'upload-img/' . strtolower($course['course_name']). '.JPEG';
 
-          echo '<div class="box course-box box-' . strtolower($course['course_name']) . '" data-course-name="' . $course['course_name'] . '" style="background-color: ' .  $randomColor . ';">';
+          echo '<div class="box course-box box-' . strtolower($course['course_name']) . '" data-course-name="' . $course['course_name'] . '">';
            if (file_exists($imagePath)) {
-            echo '<img src="' . $imagePath . '" alt="' . $course['course_name'] . '">';
+        echo '<img src="' . $imagePath . '" alt="' . $course['course_name'] . '">';
     } else {
         echo 'Image not found.';
     }
@@ -133,6 +109,5 @@ function getRandomColor() {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="ajax.js"></script>
-    <script src="randomcolor.js"></script>
   </body>
 </html>

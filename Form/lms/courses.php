@@ -4,16 +4,6 @@ require_once('connection.php');
 $query = "SELECT * FROM courses";
 $result = mysqli_query($conn, $query);
 
-$squery = "SELECT * FROM header WHERE id = 1;";
-$resulta = mysqli_query($conn, $squery);
-
-if (mysqli_num_rows($resulta) > 0) {
-    while ($header_row = mysqli_fetch_assoc($resulta)) {
-        // Display the 'textarea' and 'video' columns
-        $school_name = $header_row['school_name'];
-        $logo = $header_row['logo'];
-
-    }}
 
 ?>
 <!DOCTYPE html>
@@ -31,7 +21,6 @@ if (mysqli_num_rows($resulta) > 0) {
 <body>
    
 
-
 <div class="header" id="header">
 <?php include_once('dynamic-header.php'); ?>
 <div class="user-greeting">
@@ -45,8 +34,6 @@ if (mysqli_num_rows($resulta) > 0) {
 
 
   </div>
-
-
   <div class="container">
 
   <div class="functions">
@@ -88,7 +75,7 @@ if (mysqli_num_rows($resulta) > 0) {
         <input type="url" id="course-link" name="course-link">
 
         <label for="image">Upload Image: <input type="checkbox" name="update-image" value="1"></label>
-        <input type="file" id="image" name="image" accept="image/jpeg, image/png, image/jpg">
+        <input type="file" id="image" name="image" accept="image/jpeg, image/png">
 
         <button type="submit" class="button-function" name="edit">Edit Course</button>
     </form>

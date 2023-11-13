@@ -1,6 +1,8 @@
 <?php
 
 require_once('connection.php');
+$query = "SELECT * FROM header";
+$result = mysqli_query($conn, $query);
 
 
 

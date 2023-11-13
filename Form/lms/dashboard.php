@@ -34,7 +34,6 @@ if (mysqli_num_rows($resulta) > 0) {
 </head>
 <body>
    
-
 <div class="header" id="header">
 <?php include_once('dynamic-header.php'); ?>
 <div class="user-greeting">
@@ -48,7 +47,6 @@ if (mysqli_num_rows($resulta) > 0) {
 
 
   </div>
-
 
 
  
@@ -139,7 +137,7 @@ if (mysqli_num_rows($resulta) > 0) {
         <div class="status-box" id="update">
       <h2>Status</h2>
       <form id="status-update" name="status-form" action="update.php" method="POST">
-      <label for="status-id">ID Number:</label>
+      <label for="status-id">Student ID:</label>
       <input type="number" id="status-id" name="id" required>
 
       <input type="radio" name="status" value="1"> Active

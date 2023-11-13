@@ -2,8 +2,8 @@
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     if (isset($_POST['edit'])) {
         // Registration code
-        $textarea = $_POST['textarea'];
-        $id = 1;
+        $course_name = $_POST['textarea'];
+        $id = $_POST['id'];
        
         $video = $_FILES['video']['name']; // Get the filename of the uploaded video
         $video_tmp = $_FILES['video']['tmp_name']; // Get the temporary location of the uploaded video
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             exit();
         } else {
             // Insert user data into the database
-            $sql = "UPDATE homepage SET textarea = '$textarea', video = '$video_path' WHERE id = $id";
+            $sql = "UPDATE homepage SET textarea = '$course_name', video = '$video_path' WHERE id = $id";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 // Move the uploaded video to the desired location

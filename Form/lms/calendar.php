@@ -1,18 +1,3 @@
-<?php
-require_once('connection.php');
-
-$squery = "SELECT * FROM header WHERE id = 1;";
-$resulta = mysqli_query($conn, $squery);
-
-if (mysqli_num_rows($resulta) > 0) {
-    while ($header_row = mysqli_fetch_assoc($resulta)) {
-        // Display the 'textarea' and 'video' columns
-        $school_name = $header_row['school_name'];
-        $logo = $header_row['logo'];
-
-    }}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,32 +7,151 @@ if (mysqli_num_rows($resulta) > 0) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-    <link rel="stylesheet" href="lms.css">
-    <link rel="stylesheet" href="calendar.css">
+    <style>
+        /* Your custom CSS here */
+        body {
+            font-family: "Lucida Console", "Courier New", monospace !important;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
 
+        #calendar-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Arial', sans-serif;
+            font-size: 36px;
+            color: #e53935;
+        }
+
+        .calendar-note {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        #calendar {
+            margin-top: 20px;
+        }
+
+        .fc-head {
+            background-color: #e53935;
+            color: white;
+        }
+
+        .fc-event {
+            background-color: #0288d1;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: relative;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .fc-event:hover {
+            background-color: #0277bd;
+        }
+
+        .fc-button-primary {
+            background-color: #e53935;
+        }
+
+        .school-event {
+            background-color: #0288d1;
+            border: none;
+            color: white;
+            font-size: 11px;
+        }
+
+        .holiday-event {
+            background-color: #d32f2f;
+            border: none;
+            color: white;
+            font-size: 12px;
+        }
+
+        .fc-day[data-date="2023-10-07"] {
+            background-color: transparent !important;
+        }
+
+        .school-event {
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+
+        .event-details {
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            border: 2px solid #e53935;
+            border-radius: 10px;
+            position: absolute;
+            z-index: 1000;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .fc-event.interactive {
+            cursor: pointer;
+        }
+
+        .event-tooltip {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 1000;
+            font-size: 14px;
+        }
+
+        .delete-button {
+            color: #fff;
+            background-color: #e53935;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+
+        .static-event {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
-
-
-
-<div class="header" id="header">
-<?php include_once('dynamic-header.php'); ?>
-<div class="user-greeting">
-    <p>Hello, <span id="username">Superadmin</span></p>
-    </div>
-  </div>
-</div>
-
-  <div class="sidebar">
+<div class="sidebar">
   <?php include_once('navigation-menu.php'); ?>
-
-
   </div>
-
-
-
-
-  
 
     <div id="calendar-container">
         <h1>SCHOOL CALENDAR</h1>
@@ -136,6 +240,5 @@ if (mysqli_num_rows($resulta) > 0) {
             });
         });
     </script>
-        <script type="module" src="https://unpkg.com/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
 </body>
 </html>
