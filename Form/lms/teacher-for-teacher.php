@@ -23,11 +23,12 @@ $res = mysqli_query($conn, $sql);
    
 
 <div class="header" id="header">
-    <div class="logo">
-      <!-- Place your logo here -->
-      <img src="logo-ncu.png" alt="" class="logo-ncu">    
-      <span class="company-name">NICENE UNIVERSITY</span>
+<?php include_once('dynamic-header.php'); ?>
+<div class="user-greeting">
+    <p>Hello, <span id="username">Teacher</span></p>
     </div>
+  </div>
+</div>
 
 
 
@@ -37,7 +38,7 @@ $res = mysqli_query($conn, $sql);
   </div>
   <div class="sidebar">
     <ul class="menu">
-    <li><a href="teacher.php"><ion-icon name="accessibility-outline"></ion-icon></a></li>
+    <li><a href="teacher-for-teacher.php"><ion-icon name="accessibility-outline"></ion-icon></a></li>
       <li><a href="calendar-for-teacher.php"><ion-icon name="calendar-outline"></ion-icon></a></li>
       <li>
         <form action="logout.php" method="post">
