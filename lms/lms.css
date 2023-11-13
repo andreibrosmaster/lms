@@ -1,0 +1,130 @@
+*{
+  font-family: "Lucida Console", "Courier New", monospace !important;
+}
+
+body{
+  background-color: #eff3f6 !important;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 80px; /* Adjust the left position to match the width of the sidebar */
+    width: calc(100% - 80px); /* Adjust the width to fill the remaining space */
+    height: 80px; /* Adjust the height as per your preference */
+    background-color:  #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 1; /* Ensure the header appears above the sidebar */
+    justify-content: space-between;
+  }
+  
+  .logo {
+    margin-right: 20px;
+  }
+  
+  .user-greeting {
+    font-size: 30px; /* Adjust the font size as per your preference */
+    margin-left: auto;
+  }
+  
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px; /* Adjust the width as per your preference */
+    height: 100vh;
+    background-color: #a12c2f;
+    color: white;
+    z-index: 1; /* Increase the z-index to make the sidebar appear on top */
+
+  
+  }
+  
+  .menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  .menu li {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .menu li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    font-size: 50px; /* Adjust the font size as per your preference */
+    background-color: #a12c2f; /* Add a background color to make the buttons visible */
+    border-radius: 5px; /* Add border-radius to give the buttons rounded corners */
+  }
+  
+  
+  .menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .menu li a i {
+    margin-right: 10px;
+  }
+  
+  .logo-ncu {
+    padding-top: 3px;
+    width: 11%; /* Adjust the width as per your preference */
+    height: 11%; /* Adjust the height as per your preference */
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .company-name {
+    margin-left: 10px; /* Adjust the margin as per your preference */
+    font-size: 30px; /* Adjust the font size as per your preference */
+    font-weight: bold; /* Adjust the font weight as per your preference */
+  }
+  .menu li button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Increase the padding to make the button larger */
+    color: white;
+    background-color: transparent;
+    border: none;
+    font-size: 60px; /* Adjust the font size as per your preference */
+  }
+  
+  .custom-dialog{
+  
+      position: fixed;
+      top: 25%;
+
+      transform: translate(-50%, -50%);
+
+    
+  }
+
+
+  .navi-dashboard{
+
+    display: block;
+    text-align: center;
+    margin-top: 5px; 
+    font-size: 10px;
+  }
+
+a{
+
+    display: inline-block; 
+  }
