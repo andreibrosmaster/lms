@@ -31,38 +31,22 @@ if (mysqli_num_rows($resulta) > 0) {
 
 
 <div class="header" id="header">
-    <div class="logo">
-      <!-- Place your logo here -->
-      <img src="<?php echo "$logo"?>" alt="" class="logo-ncu">    
-      <span class="company-name"><?php if ($resulta) {
-    // Check if data was found
-    if (mysqli_num_rows($resulta) > 0) {
-        // Fetch the school name
-        $row = mysqli_fetch_assoc($resulta);
-        $school_name = $row['school_name'];
-        ?>
-        <span class="company-name"><?php echo $school_name; ?></span>
-        <?php
-    } else {
-        // No data found, you can display a default name or a message
-        ?>
-        <span class="no-school-found" style="font-size: 10px;">No School Name Found</span>
-        <?php
-    }
-}?></span>
+<?php include_once('dynamic-header.php'); ?>
+<div class="user-greeting">
+    <p>Hello, <span id="username">Teacher</span></p>
     </div>
+  </div>
+</div>
 
 
 
    <!--USERNAME SHOW---->
-    <div class="user-greeting">
-    <p>Hello, Student<span id="username"></span></p>
-    </div>
+  
 
   </div>
   <div class="sidebar">
     <ul class="menu">
-    <li><a href="teacher-for-teacher.php"><ion-icon name="easel-outline"></ion-icon></a></li> 
+    <li><a href="teacher-for-teacher.php"><ion-icon name="accessibility-outline"></ion-icon></a></li> 
       <li><a href="calendar-for-teacher.php"><ion-icon name="calendar-outline"></ion-icon></a></li>
       <li>
         <form action="logout.php" method="post" name="logout">

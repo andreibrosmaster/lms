@@ -6,19 +6,6 @@ $result = mysqli_query($conn, $query);
 
 $sql = "SELECT * FROM courses";
 $res = mysqli_query($conn, $sql);
-
-$squery = "SELECT * FROM header WHERE id = 1;";
-$resulta = mysqli_query($conn, $squery);
-
-if (mysqli_num_rows($resulta) > 0) {
-    while ($header_row = mysqli_fetch_assoc($resulta)) {
-        // Display the 'textarea' and 'video' columns
-        $school_name = $header_row['school_name'];
-        $logo = $header_row['logo'];
-
-    }}
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,32 +23,17 @@ if (mysqli_num_rows($resulta) > 0) {
    
 
 <div class="header" id="header">
-    <div class="logo">
-      <!-- Place your logo here -->
-      <img src="<?php echo "$logo"?>" alt="" class="logo-ncu">    
-      <span class="company-name"><?php echo "$school_name"?></span>
-    </div>
-
-
-
-    <div class="user-greeting">
+<?php include_once('dynamic-header.php'); ?>
+<div class="user-greeting">
     <p>Hello, <span id="username">Superadmin</span></p>
     </div>
   </div>
+</div>
+
   <div class="sidebar">
-    <ul class="menu">
-    <li><a href="header.php"><ion-icon name="laptop-outline"></ion-icon></a></li>
-    <li><a href="homepage-db.php"><ion-icon name="easel-outline"></ion-icon></a></li> 
-    <li><a href="teacher.php"><ion-icon name="accessibility-outline"></ion-icon></a></li>
-      <li><a href="dashboard.php"><ion-icon name="people-outline"></ion-icon></a></li>
-      <li><a href="courses.php"><ion-icon name="book-outline"></ion-icon></a></li>
-      <li><a href="calendar.php"><ion-icon name="calendar-outline"></ion-icon></a></li>
-      <li>
-        <form action="logout.php" method="post">
-          <button type="submit" name="logoutBtn"><ion-icon name="log-out-outline"></ion-icon></button>
-        </form>
-      </li>
-    </ul>
+  <?php include_once('navigation-menu.php'); ?>
+
+
   </div>
 
   <div class="container">
@@ -85,16 +57,20 @@ if (mysqli_num_rows($resulta) > 0) {
 
         <!-- Edit Function -->
         <div class="edit">
-    <h2>Edit Course Content</h2>
-    <form id="editForm" name="editForm" action="teacher-edit.php" method="POST" enctype="multipart/form-data">
+    <h2>Edit Course</h2>
+    <form id="editForm" name="edit" action="course-edit.php" method="POST" enctype="multipart/form-data">
 
-        <label for="course-id">Course ID</label>
+        <label for="course-id">Course ID:</label>
         <input type="number" id="course-id" name="id" required>
 
-        <label for="description">Description</label>
+        <label for="course-name">Course Name: <input type="checkbox" name="update-course-name" value="1"></label>
+        <input type="text" id="course-name" name="course-name">
+
+        <label for="description">Description: <input type="checkbox" name="update-description" value="1"></label>
         <textarea id="description" name="description"></textarea>
 
-      
+        <label for="course-link">Course Link: <input type="checkbox" name="update-course-link" value="1"></label>
+        <input type="url" id="course-link" name="course-link">
 
 
 

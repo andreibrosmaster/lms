@@ -114,3 +114,16 @@ body{
 
     
   }
+
+  .navi-dashboard{
+
+    display: block;
+    text-align: center;
+    margin-top: 5px; 
+    font-size: 10px;
+  }
+
+a{
+
+    display: inline-block; 
+  }

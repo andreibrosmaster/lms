@@ -34,33 +34,19 @@ if (mysqli_num_rows($resulta) > 0) {
 <body>
    
 <div class="header" id="header">
-    <div class="logo">
-      <!-- Place your logo here -->
-      <img src="<?php echo "$logo"?>" alt="School Logo" class="logo-ncu">    
-      <span class="company-name"><?php echo "$school_name"?></span>
-    </div>
-
-
-
-    <div class="user-greeting">
+<?php include_once('dynamic-header.php'); ?>
+<div class="user-greeting">
     <p>Hello, <span id="username">Superadmin</span></p>
     </div>
   </div>
+</div>
+
   <div class="sidebar">
-    <ul class="menu">
-    <li><a href="header.php"><ion-icon name="laptop-outline"></ion-icon></a></li>
-    <li><a href="homepage-db.php"><ion-icon name="easel-outline"></ion-icon></a></li> 
-    <li><a href="teacher.php"><ion-icon name="accessibility-outline"></ion-icon></a></li>
-      <li><a href="dashboard.php"><ion-icon name="people-outline"></ion-icon></a></li>
-      <li><a href="courses.php"><ion-icon name="book-outline"></ion-icon></a></li>
-      <li><a href="calendar.php"><ion-icon name="calendar-outline"></ion-icon></a></li>
-      <li>
-        <form action="logout.php" method="post">
-          <button type="submit" name="logoutBtn"><ion-icon name="log-out-outline"></ion-icon></button>
-        </form>
-      </li>
-    </ul>
+  <?php include_once('navigation-menu.php'); ?>
+
+
   </div>
+
 
 
  
@@ -95,7 +81,7 @@ if (mysqli_num_rows($resulta) > 0) {
     <textarea id="school_name" name="school_name" required></textarea>
 
     <label for="logo">Header Logo</label>
-    <input type="file" id="logo" name="logo" accept="image/png" required>
+    <input type="file" id="logo" name="logo" accept="image/jpg" required>
 
         <button type="submit" name="edit">Edit Data</button>
     </form>
